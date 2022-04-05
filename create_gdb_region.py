@@ -45,10 +45,10 @@ with arcpy.da.SearchCursor(region, fields) as cursor:
 del cursor
 
 """
-@param: liste of shp
+@param: liste of shp, bdd
 return : stock les shp dans une base de données 
 """
-def sotre_list_of_shp(shp_liste, base_de_donnee):
+def store_list_of_shp(shp_liste, base_de_donnee):
     for shp in shp_liste:
         arcpy.FeatureClassToGeodatabase_conversion(shp, base_de_donnee)
 
@@ -93,7 +93,7 @@ def create_gdb_region(entree):
                 print(f"veuillez un nom de région valide parmi ceux présent dans cette liste : {liste_of_region} OU ALL pour exporter tout.")
                 break
         if entree.lower() == 'all':
-            sotre_list_of_shp(liste_of_shp, bdd)
+            store_list_of_shp(liste_of_shp, bdd)
         else:
             pass
 
